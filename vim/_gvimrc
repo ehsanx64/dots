@@ -1,0 +1,38 @@
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+" Set gvim's font
+"set guifont=NanumGothicCoding:h12:w6:b
+"set guifont=Edlo:h11
+"set guifont=Code\ New\ Roman:h12:w7:i
+"set guifont=CamingoCode:h11:i
+"set guifont=CamingoCode:h11:w7:bi
+"set guifont=Iosevka\ Term:h10:w7:i
+
+" Set colorscheme for gvim (overrides colorscheme defined in ~/.vimrc)
+"colorscheme codeblocks_dark
+
+" Set encoding 
+set encoding=utf-8
+set ff=unix
+set fileformats=unix,dos
+
+" Set gvim window parameters on startup
+winsize 110 27
+winpos 30 50
+
+" Define useful key bindings
+imap <c-s> <c-o>:wa<cr>
+nmap <c-s> :wa<cr>
+
+" Disable nerdtree tabs open plugin auto start
+let g:nerdtree_tabs_open_on_gui_startup = 0
+
+" Commands required by pathogen
+if exists('pathogen#infect')
+	filetype off
+	execute pathogen#infect()
+	execute pathogen#helptags()
+	filetype plugin indent on
+endif
+syntax on
