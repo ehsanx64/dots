@@ -1,0 +1,375 @@
+" {{{ Initial config
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+" }}}
+
+" {{{ Vundle Setup
+call vundle#begin()
+    " {{{ Plugins
+	" alternatively, pass a path where Vundle should install plugins
+	"call vundle#begin('~/some/path/here')
+
+	" let Vundle manage Vundle, required
+	Plugin 'VundleVim/Vundle.vim'
+
+	" The following are examples of different formats supported.
+	" Keep Plugin commands between vundle#begin/end.
+	" plugin on GitHub repo
+	Plugin 'tpope/vim-fugitive'
+
+	" plugin from http://vim-scripts.org/vim/scripts.html
+	" Plugin 'L9'
+	" Git plugin not hosted on GitHub
+	"Plugin 'git://git.wincent.com/command-t.git'
+	"
+	" git repos on your local machine (i.e. when working on your own plugin)
+	"Plugin 'file:///home/gmarik/path/to/plugin'
+	"
+	" The sparkup vim script is in a subdirectory of this repo called vim.
+	" Pass the path to set the runtimepath properly.
+	Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+	" Install L9 and avoid a Naming conflict if you've already installed a
+	" different version somewhere else.
+	" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+	" General plugins
+	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'preservim/tagbar'
+	Plugin 'preservim/nerdtree'
+	Plugin 'maralla/completor.vim'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+	"Plugin 'akinsho/toggleterm.nvim'
+
+	" Go language plugins
+	Plugin 'fatih/vim-go'
+    " }}}
+
+	" {{{ Color schemes
+	" Dark 
+	Plugin 'morhetz/gruvbox'
+	Plugin 'tomasr/molokai'
+	Plugin 'NLKNguyen/papercolor-theme'
+	"Plugin 'ayu-theme/ayu-vim'
+	"Plugin 'sickill/vim-monokai'
+	"Plugin 'dracula/vim'
+	"Plugin 'raphamorim/lucario'
+	"Plugin 'sainnhe/gruvbox-material'
+	"Plugin 'sainnhe/sonokai'
+	"Plugin 'srcery-colors/srcery-vim'
+	"Plugin 'ajmwagar/vim-deus'
+	"Plugin 'pineapplegiant/spaceduck'
+	"Plugin 'kaicataldo/material.vim'
+	"Plugin 'ghifarit53/tokyonight-vim'
+	"Plugin 'mangeshrex/uwu.vim'
+	"Plugin 'ciaranm/inkpot'
+	"Plugin 'yuttie/hydrangea-vim'
+	"Plugin 'itchyny/landscape.vim'
+	"Plugin 'jsit/toast.vim'
+	"Plugin 'ray-x/aurora'
+	"Plugin 'ntk148v/vim-horizon'
+	"Plugin 'artanikin/vim-synthwave84'
+	"Plugin 'rafalbromirski/vim-aurora'
+	"Plugin 'zanglg/nova.vim'
+	"Plugin 'cseelus/vim-colors-lucid'
+	"Plugin 'humanoid-colors/vim-humanoid-colorscheme'
+	"Plugin 'trapd00r/neverland-vim-theme'
+	"Plugin 'gwutz/vim-materialtheme'
+	"Plugin 'agude/vim-eldar'
+	"Plugin 'mitsuhiko/fruity-vim-colorscheme'
+	"Plugin 'crusoexia/vim-dracula'
+	"Plugin 'senran101604/neotrix.vim'
+	"Plugin 'josuegaleas/jay'
+	"Plugin 'felipesousa/rupza'
+	"Plugin 'changyuheng/color-scheme-holokai-for-vim'
+	"Plugin 'gkjgh/cobalt'
+	"Plugin 'lucasprag/simpleblack'
+	"Plugin 'blackbirdtheme/vim'
+	"Plugin 'lanox/lanox-vim-theme'
+	"Plugin 'haron-prime/antares'
+	"Plugin 'katawful/kat.vim'
+	"Plugin 'lissaferreira/dalton-vim'
+	"Plugin 'evturn/cosmic-barf'
+	"Plugin 'shapeoflambda/dark-purple.vim'
+	"Plugin 'jdsimcoe/hyper.vim'
+	"Plugin 'vimoxide/vim-cinnabar'
+	"Plugin 'gerardbm/vim-atomic'
+	"Plugin 'broduo/broduo-color-scheme'
+	"Plugin 'kitten/vim-adventurous'
+	"Plugin 'cdaddr/gentooish.vim'
+	"Plugin 'queyenth/oxeded.vim'
+	"Plugin 'blindfs/flattr.vim'
+	"Plugin 'aswathkk/darkscene.vim'
+	"Plugin 'balanceiskey/vim-framer-syntax'
+	"Plugin 'lmintmate/blue-mood-vim'
+	"Plugin 'hiroakis/cyberspace.vim'
+	"Plugin 'vim-scripts/dante.vim'
+	"Plugin 'wdhg/dragon-energy'
+	"Plugin 'audibleblink/hackthebox.vim'
+	"Plugin 'szorfein/sci.vim'
+	"Plugin 'pasela/edark.vim'
+	"Plugin 'kamykn/skyhawk'
+	"Plugin 'evgenyzinoviev/vim-vendetta'
+	"Plugin 'enthudave/star_wars.vim'
+	"Plugin 'neur1n/neucs.vim'
+	"Plugin 'justb3a/vim-smarties'
+	"Plugin 'jedireza/vim-rizzle'
+	"Plugin 'arkham/vim-tango'
+	"Plugin 'avelino/flux.vim'
+	"Plugin 'vim-skittles-theme'
+	"Plugin 'vim-scripts/rootwater.vim'
+	"Plugin 'vim-scripts/bluechia.vim'
+	"Plugin 'aesthetikx/neoscheme.vim'
+	"Plugin 'vim-scripts/ego.vim'
+	"Plugin 'conweller/muted.vim'
+	"Plugin 'vim-scripts/midnight2.vim'
+	"Plugin 'ewk/blue_in_green'
+	"Plugin 'vim-scripts/crt.vim'
+	"Plugin 'simmxns/purpledepth'
+
+	" Light
+	Plugin 'sonph/onehalf'
+	"Plugin 'sainnhe/everforest'
+	"Plugin 'jonathanfilip/vim-lucius'
+	"Plugin 'hzchirs/vim-material'
+	"Plugin 'google/vim-colorscheme-primary'
+	"Plugin 'freeo/vim-kalisi'
+	"Plugin 'john2x/flatui.vim'
+	"Plugin 'kjssad/quantum.vim'
+	"Plugin 'jacekd/vim-iawriter'
+	"Plugin 'severij/vadelma'
+	"Plugin 'machakann/vim-colorscheme-imas'
+	"Plugin 'aonemd/quietlight.vim'
+	"Plugin 'mizux/vim-colorschemes'
+	"Plugin 'zcodes/vim-colors-basic'
+	"Plugin 'mkarmona/materialbox'
+	"Plugin 'haystackandroid/strawberry'
+	"Plugin 'wimstefan/vim-artesanal'
+	"Plugin 'schickele/vim-fruchtig'
+	"Plugin 'vim-scripts/summerfruit256.vim'
+	"Plugin 'therubymug/vim-pyte'
+	"Plugin 'ggalizzi/cake-vim'
+	"Plugin 'adelarsq/vim-grimmjow'
+	"Plugin 'cesardeazevedo/fx-colorscheme'
+	"Plugin 'ashfinal/vim-colors-paper'
+	"Plugin 'marlun/vim-starwars'
+	"Plugin 'datmaffin/vim-colors-bionik'
+	"Plugin 'bdesham/biogoo'
+	"Plugin 'jaysandhu/xcode-vim'
+	"Plugin 'habamax/vim-psionic'
+	"Plugin 'haystackandroid/vrunchbang'
+	"Plugin 'haystackandroid/plumber'
+	"Plugin 'nicolascb/camarada.vim'
+	"Plugin 'd11wtq/subatomic256.vim'
+	"Plugin 'vim-scripts/khaki.vim'
+	"Plugin 'vim-scripts/lingodirector.vim--pawlik'
+	"Plugin 'ku-s-h/summerfruit256.vim'
+	"Plugin 'vim-scripts/nuvola.vim'
+	"Plugin 'vim-scripts/mod_tcsoft.vim'
+	"Plugin 'ayoola-moore/vim-colokschi'
+	"Plugin 'shvechikov/vim-colors-thegoodluck'
+	"Plugin 'vim-scripts/dual.vim'
+	"Plugin 'andrewvos/vim-pinata'
+    " }}}
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" }}}
+
+" {{{ General config
+" Window keyboard shortcuts (ctrl-c, ctrl-x, ctrl-v, ctrl-z)
+source $VIMRUNTIME/mswin.vim
+syntax on
+set exrc
+set guicursor=
+
+set hidden
+set noerrorbells
+set nocompatible
+set noswapfile
+set nobackup
+set undofile
+set undodir=~/.vim/undodir
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+set tabstop=4 
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+set smartcase
+set ignorecase
+set number
+set relativenumber
+set foldmethod=marker
+set incsearch
+set fileformats=unix,dos
+"set autochdir
+set ff=unix
+
+" Right column
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+"set termguicolors
+
+set scrolloff=2
+
+" Make mks command save global variables/functions too
+setg sessionoptions+=globals
+
+" Status line
+setg statusline+=%F
+
+" }}}
+
+" {{{ General mappings
+let g:mapleader=" "
+nnoremap <Leader>b :ls<cr>:b<Space>
+nnoremap <Leader>k :bn<cr>
+nnoremap <Leader>jj :bp<cr>
+nnoremap <Leader>db :bd<cr>
+nnoremap <Leader>s :e #<cr>
+nnoremap <Leader>sa :wa<cr>
+nnoremap <Leader>co :copen<cr>
+nnoremap <Leader>cn :cnext<cr>
+nnoremap <Leader>cp :cprev<cr>
+nnoremap <Leader>sa :wa<cr>
+nnoremap <Leader>m <c-w>_
+nnoremap <Leader>mr <c-w>10-<c-w>j
+map <leader>l :ls<cr>:b<space>
+map <leader>t :term<cr><c-w>x<c-w>j<c-w>10-
+inoremap <c-;> <c-o><c-w>p
+nnoremap <c-;> <c-w>p
+tnoremap <c-;> <c-w>p 
+" }}}
+
+" {{{ Color scheme
+"colorscheme gruvbox
+colorscheme PaperColor
+set background=light
+" }}}
+
+" {{{ Auto commands
+augroup AutoChdir
+	autocmd!
+	autocmd BufEnter * if &buftype !=# 'terminal' | lchdir %:p:h | endif
+augroup END
+" }}}
+
+" {{{ Airline config
+"let g:airline_left_sep='>'
+"let g:airline_symbols_ascii = 0
+"let g:airline#extensions#tabline#fnamemod = ':p'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+" }}}
+
+" {{{ NERDTree config
+let g:NERDTreeNodeDelimiter = "\u00a0"
+nmap <c-b> :NERDTreeToggle<CR>
+imap <c-b> <c-o>:NERDTreeToggle<CR>
+" }}}
+
+" {{{ ctrl-p config
+let g:ctrlp_root_markers = ['.ctrlp', '.git']
+nmap <c-l> :CtrlPBuffer<cr>
+imap <c-l> <c-o>:CtrlPBuffer<cr>
+" }}}
+
+" {{{ tagbar config
+nmap <F8> :TagbarToggle<CR>
+" }}}
+
+" {{{ completor config
+" Enable lsp for go by using gopls
+let g:completor_filetype_map = {}
+let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
+let g:go_bin_path = $HOME."/go/bin"
+" }}}
+
+" {{{ Go Programming
+" Use new vim 8.2 popup windows for Go Doc
+let g:go_doc_popup_window = 1
+" Custom commands for go file types
+autocmd FileType go nnoremap <buffer> <f5> :w<cr> :!go run %<cr>
+" }}}
+
+" {{{ Vim Programming
+" Custom commands for vim file types
+autocmd FileType vim nnoremap <leader>' :w<cr> :so %<cr>
+" }}}
+
+" {{{ Forth Programming
+" Fortran
+"if has("fname_case")
+"  au BufNewFile,BufRead *.FOR,*.FPP,*.FTN,*.F77,*.F90,*.F95,*.F03,*.F08	 setf fortran
+"endif
+"au BufNewFile,BufRead   *.for,*.fortran,*.fpp,*.ftn,*.f77,*.f90,*.f95,*.f03,*.f08  setf fortran
+" Forth language config
+"au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt setf forth
+"au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt set syntax=forth
+let filetype_fs = "forth"
+" }}}
+
+" {{{ Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"Credit joshdick
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+" }}}
+
+" {{{ Custom Functions
+" Run the given command in shell. Uses a temporary file method to capture the
+" command output. Return the command output as a string.
+func! RunCommand(command)
+    let file = "/tmp/pwd"
+    call system(a:command + " > " + file)
+    let out = readfile(file)
+    return out
+endf
+
+" Toggle relativenumber option 
+func! ToggleRelativeNumbers()
+    if &rnu == 0
+        set rnu
+    else
+        set nornu
+    endif
+endf
+
+" Test the RunCommand
+func! TestCommand()
+    echo RunCommand("pwd")
+    sleep 1
+endf
+" }}}
+
+" {{{ Advanced mappings
+nnoremap <leader>; :call TestCommand()<cr>
+nnoremap <leader>: :call ToggleRelativeNumbers()<cr>
+" }}}
