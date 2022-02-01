@@ -320,7 +320,7 @@ autocmd FileType vim nnoremap <leader>' :w<cr> :so %<cr>
 "endif
 "au BufNewFile,BufRead   *.for,*.fortran,*.fpp,*.ftn,*.f77,*.f90,*.f95,*.f03,*.f08  setf fortran
 " Forth language config
-"au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt setf forth
+au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt setf forth
 "au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt set syntax=forth
 let filetype_fs = "forth"
 " }}}
