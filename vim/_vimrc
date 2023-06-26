@@ -1,6 +1,7 @@
 " {{{ Initial config
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/ctrlp.vim
 " }}}
 
 " {{{ Vundle Setup
@@ -34,16 +35,19 @@ call vundle#begin()
 	" Plugin 'ascenator/L9', {'name': 'newL9'}
 
 	" General plugins
-	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'preservim/tagbar'
-	Plugin 'preservim/nerdtree'
-	Plugin 'maralla/completor.vim'
+    "heavystuff
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'preservim/tagbar'
+    Plugin 'preservim/nerdtree'
+    "Plugin 'maralla/completor.vim'
+
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
 	"Plugin 'akinsho/toggleterm.nvim'
 
-	" Go language plugins
-	Plugin 'fatih/vim-go'
+    " Go language plugins
+    Plugin 'fatih/vim-go'
+
     " }}}
 
 	" {{{ Color schemes
@@ -131,7 +135,7 @@ call vundle#begin()
 	" Light
 	Plugin 'sonph/onehalf'
 	"Plugin 'sainnhe/everforest'
-	"Plugin 'jonathanfilip/vim-lucius'
+	Plugin 'jonathanfilip/vim-lucius'
 	"Plugin 'hzchirs/vim-material'
 	"Plugin 'google/vim-colorscheme-primary'
 	"Plugin 'freeo/vim-kalisi'
@@ -285,20 +289,25 @@ imap <c-b> <c-o>:NERDTreeToggle<CR>
 " }}}
 
 " {{{ ctrl-p config
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP /'
 let g:ctrlp_root_markers = ['.ctrlp', '.git']
+set wildignore+=**\\vendor\\**,**\\node_modules\\**,*/node_modules/*
 nmap <c-l> :CtrlPBuffer<cr>
 imap <c-l> <c-o>:CtrlPBuffer<cr>
 " }}}
 
 " {{{ tagbar config
 nmap <F8> :TagbarToggle<CR>
+"let g:tagbar_ctags_bin = 'c:\Program Files\Emacs\emacs-28.1\bin\ctags'
+let g:tagbar_ctags_bin = 'd:\Tools\ctags58\ctags'
 " }}}
 
 " {{{ completor config
 " Enable lsp for go by using gopls
-let g:completor_filetype_map = {}
-let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
-let g:go_bin_path = $HOME."/go/bin"
+"let g:completor_filetype_map = {}
+"let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
+"let g:go_bin_path = $HOME."/go/bin"
 " }}}
 
 " {{{ Go Programming
@@ -321,7 +330,7 @@ autocmd FileType vim nnoremap <leader>' :w<cr> :so %<cr>
 "au BufNewFile,BufRead   *.for,*.fortran,*.fpp,*.ftn,*.f77,*.f90,*.f95,*.f03,*.f08  setf fortran
 " Forth language config
 au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt setf forth
-"au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt set syntax=forth
+au! BufNewFile,BufRead *.FS,*.SEQ,*.seq,*.FT,*.F,*.FOR,*.4TH,*.FRT,*.fs,*.ft,*.f,*.for,*.4th,*.frt set syntax=forth
 let filetype_fs = "forth"
 " }}}
 
