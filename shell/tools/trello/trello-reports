@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Grab the first json file in the CWD as the default file
+THEFILE=`ls *.json | head -n 1`
+CMD="$1"
+
+if [ "$#" -eq 3 ]; then
+    THEFILE="$2"
+fi
+
+# Define a function to die gracefully
+die() {
+    echo "$@"
+    exit 1
+}
+
+# Define a shortcut for boring part
+do_jq() {
+    cat "$THEFILE" | jq "$@"
+}
+
+# This is the manual
+show_help() {
+    echo -e "Reporting Tools for Trello Exported Workspaces\n"
+    echo -e "trello-reports [COMMANDS] [INPUT_FILE]\n"
+    echo -e "Available Commands:\n"
+    echo -e "list-boards\t\tList board names"
+    echo -e "count-boards\t\tDisplay boards count"
+    echo
+}
+
+# Check for requirements
+if [ ! -f "$THEFILE" ]; then
+    die "Error: File '$THEFILE' not found"
+fi
+
+# Decide what to do
+case $CMD in
+    list-boards)
+        do_jq '. | .lists | .[] |  .name' 
+        ;;
+
+    count-boards)
+        do_jq '. | .lists | length' 
+        ;;
+
+    # Default case and help share the same behaviour (show_help)
+    help)
+        ;;&
+    *)
+        show_help
+        ;;
+esac
+
+
