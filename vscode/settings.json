@@ -1,0 +1,39 @@
+{
+    "editor.fontFamily": "'Jetbrains Mono', 'monospace', monospace",
+    "editor.fontSize": 14,
+    "editor.rulers": [80],
+    "editor.wordWrap": "on",
+    "workbench.settings.editor": "json",
+    "open-in-vim.openMethod": "gvim",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "extensions.autoUpdate": false,
+    "workbench.editorAssociations": {
+        "*.pdf": "default"
+    },
+    "cmake.showOptionsMovedNotification": false,
+    "vscode-neovim.neovimClean":true,
+    "vscode-neovim.ctrlKeysForNormalMode": [
+        "i",
+        "o",
+        "q"
+    ],
+    "vscode-neovim.ctrlKeysForInsertMode": [
+    ],
+    "terminal.integrated.fontFamily": "Hack, 'IBM Plex Mono', 'Jetbrains Mono'",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": 400,
+    "git.openRepositoryInParentFolders": "never",
+    "php.debug.executablePath": "/usr/bin/php",
+    "openWith.externalApp.apps": {
+        "goneovim": "/usr/local/bin/goneovim",
+        "gvim": "/usr/bin/gvim"
+    },
+    "workbench.colorTheme": "Bluloco Light Italic",
+    "workbench.iconTheme": "material-icon-theme",
+    "go.toolsManagement.autoUpdate": true,
+    "umlet.fontNormal": "/usr/share/fonts/truetype/quicksand/Quicksand-Regular.ttf",
+    "umlet.fontBold": "/usr/share/fonts/truetype/quicksand/Quicksand-Bold.ttf",
+    "umlet.fontItalic": "/usr/share/fonts/truetype/quicksand/Quicksand-Italic.ttf",
+}
