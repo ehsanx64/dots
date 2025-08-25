@@ -1,0 +1,131 @@
+#!/usr/bin/bash
+
+logging=false
+debugging=false
+
+if [ "$debugging" = true ]; then
+    set -x  # Enable debugging
+fi
+
+# Configuration
+main=e
+
+# Important path variables
+basePath=$(dirname `realpath ${BASH_SOURCE[0]}`)
+scriptsPath="$basePath/scripts"
+privateScriptsPath="$basePath/private"
+
+# If logging is enabled display current variables
+if [ "$logging" = true ]; then
+    echo "basePath: $basePath"
+    echo "scriptsPath: $scriptsPath"
+    echo "privateScriptsPath: $privateScriptsPath"
+fi
+
+# Source public stuff
+source "$scriptsPath/alias"
+source "$scriptsPath/env"
+source "$scriptsPath/vars"
+
+# Source private stuff
+source "$privateScriptsPath/alias"
+source "$privateScriptsPath/env"
+source "$privateScriptsPath/vars"
+
+case $1 in
+    # If not parameter given, edit the main script in vim
+    # Otherwise try to find and edit the file from public/private directories
+    edit)
+        if [ "$#" == 1 ]; then
+            echo "Editing the main script"
+            vim $0;
+        elif [ "$2" != "" ]; then
+            if [ -r "$scriptsPath/$2" ]; then
+                vim "$scriptsPath/$2"
+            elif [ -r "$privateScriptsPath/$2" ]; then
+                vim "$privateScriptsPath/$2"
+            fi
+        fi
+        ;;
+
+    # Run a X application and redirect its stderr & stdout to /dev/null
+    xrun)
+        "${@:2}" > /dev/null 2>&1 &
+        ;;
+
+    # List files in public and private scripts 
+    ls-scripts)
+        echo "### Scripts ####################################################"
+        ls "$scriptsPath"
+        echo "### Private Scripts ############################################"
+        ls "$privateScriptsPath"
+        ;;
+
+    # Dump public and private variables
+    ls-vars)
+        echo "### Variables ##################################################"
+        for key in "${!a[@]}"; do
+            printf "%-15s\t%s\n" "$key" "${a[$key]}"
+        done
+        echo "### Private Variables ##########################################"
+        for key in "${!p[@]}"; do
+            printf "%-15s\t%s\n" "$key" "${p[$key]}"
+        done
+        echo
+        ;;
+
+    # First to try to execute the public script, if it couldn't be found try to
+    # execute it from the private scripts folder; if both fails displays an 
+    # error
+    do)
+        # If no parameter/command given return an error
+        if [ "$2" == "" ]; then
+            echo "no command specified"
+            exit 1
+        fi
+
+        if [ -f "$scriptsPath/$2" ]; then
+            source "$scriptsPath/$2"
+        elif [ -f "$privateScriptsPath/$2" ]; then
+            source "$privateScriptsPath/$2"
+        else
+            echo "file not found: $2"
+        fi
+        ;;
+
+    # Escape the '\ ' matches with '\\ '
+    esc-backslash)
+        sed 's/\ /\\\ /g'
+        ;;
+
+    # Make a tgz archive from the given filename; a date label appended to the archive filename
+    pak)
+        tar czf "$2-`date '+%F-%H%M'`.tgz" "$2"
+        ;;
+
+    pak-at)
+        tar czf "$3/$2-`date '+%F-%H%M'`.tgz" "$2"
+        ;;
+
+    v2ray)
+        sudo ENABLE_DEPRECATED_TUN_ADDRESS_X=true sing-box run -c /home/ehsan/Tools/v2ray/config.json
+        ;;
+
+	*)
+        if [ "$1" == "" ]; then
+            echo "Don't know what to do!"
+            exit 0
+        fi
+
+		if [ "$2" == "" ] && [ "${a[$1]}" == "" ]; then
+            if [ "$2" == "" ] && [ "${p[$1]}" == "" ]; then
+                echo "Nothing to do";
+            else
+                echo "${p[$1]}";
+            fi
+		else
+            echo "${a[$1]}";
+		fi
+        ;;
+esac
+

@@ -1,0 +1,20 @@
+# nnn tools
+case "$3" in
+    get-sel)
+        cat ~/.config/nnn/.selection
+        ;;
+
+    get)
+        $main do nnn get-sel | tr '\0' '\n'
+        ;;
+
+    clip)
+        cat ~/.config/nnn/.selection | tr '\n' '\0' | xsel -ib
+        ;;
+
+    du)
+        $main do nnn get-sel | xargs -0 -I '{}' du -sh {}
+        ;;
+
+esac
+

@@ -1,0 +1,19 @@
+case "$3" in
+    bash)
+        docker exec -it "$4" bash
+        ;;
+
+    exec)
+        docker exec -it "$4" "$5"
+        ;;
+
+    hub-open)
+        hubUrl="https://hub.docker.com/_/"
+        docker search "$4" --limit 1 | awk 'NR==2 {print $1}' | xargs -I {} open "$hubUrl{}"  
+        ;;
+
+    *)
+        docker stats
+        ;;
+esac
+

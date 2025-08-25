@@ -1,0 +1,24 @@
+case "$3" in
+    # Trim the cr from the end of variable
+    t)
+        if [ "$4" == "" ]; then
+            echo "No key given"
+        else
+            echo "Copying $3"
+            $main "$4" | tr -d '\n' | xsel -ib;
+        fi
+        ;;
+
+    # Look for given key in public and private vars and (if found) put its value
+    # on system clipboard
+    *)
+        if [ "$3" == "" ]; then
+            echo "No key given"
+        else
+            echo "Copying $3"
+            $main "$3" | xsel -ib;
+        fi
+        ;;
+
+esac
+

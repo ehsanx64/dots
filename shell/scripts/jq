@@ -1,0 +1,23 @@
+# jq Stuff
+case "$3" in
+    curl)
+        if [ "$jqurl" == "" ]; then
+            if [ "$4" == "" ]; then
+                echo "URL missing"
+            else
+                if [ "$5" == "" ]; then
+                    curl -s "$4" | jq
+                else
+                    curl -s "$4" | jq "$5"
+                fi
+            fi
+        else
+            if [ "$5" == "" ]; then
+                curl -s "$4" | jq
+            else
+                curl -s "$jqurl" | jq "$5"
+            fi
+        fi
+        ;;
+esac
+

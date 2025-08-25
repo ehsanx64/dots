@@ -1,0 +1,109 @@
+case "$3" in
+    coderoman)
+        xterm -fa "CodeNewRoman Nerd Font Mono" -fs 12.5 -bc -sb \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: green' \
+            -xrm 'xterm*selectToClipboard: true' -en en_US.UTF-8 
+        ;;
+
+    coderoman-dark)
+        xterm -fa "CodeNewRoman Nerd Font Mono" -fs 12.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: white' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
+    coderoman-light)
+        xterm -fa "CodeNewRoman Nerd Font Mono" -fs 12 -bc -sb \
+            -xrm 'xterm*selectToClipboard: true' -rv -en en_US.UTF-8
+        ;;
+
+    consolas)
+        xterm -fa "Consolas" -fs 12.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: cyan' \
+            -xrm 'xterm*selectToClipboard: true'
+        ;;
+
+    consolas-light)
+        xterm -fa "Consolas" -fs 12 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    monaco)
+        xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: green' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
+    monaco-big)
+        xterm -fa "Monaco" -fs 12.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: green' \
+            -xrm 'xterm*allowBoldFonts: false' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
+    monaco-dark)
+        xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: white' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
+    monaco-light)
+        xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    monaco-blue)
+        xterm -fa "Monaco" -fs 11.6  -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: navy' \
+            -xrm 'xterm*allowBoldFonts: false' \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    monaco-light-green)
+        xterm -fa "Monaco" -fs 11.5 -bc -sb -rv -en en_US.UTF-8 \
+            -xrm 'xterm*background: darkgreen' \
+            -xrm 'xterm*foreground: white' \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    courier-light)
+        xterm -fa "Courier 10 Pitch" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    courier-blue)
+        xterm -fa "Courier 10 Pitch" -fs 11.5  -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: navy' \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    ubuntu-blue)
+        xterm -fa "UbuntuMono Nerd Font" -fs 14.5  -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: navy' \
+            -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    dark)
+        xterm -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: white' \
+            -xrm 'xterm*selectToClipboard: true'
+            #    -xrm 'xterm*faceName: fixed' \
+            #    -xrm 'xterm*renderFont: true'  \
+            #    -xrm 'xterm*faceSize: 10.5'  \
+        ;;
+
+    light)
+        xterm -bc -sb -rv -en en_US.UTF-8 \
+            -xrm 'xterm*selectToClipboard: true'
+        ;;
+esac
+

@@ -1,0 +1,3 @@
+# Local (own) variables
+declare -A a
+a[thename]="the-name"

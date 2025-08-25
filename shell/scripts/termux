@@ -1,0 +1,61 @@
+# Termux
+case "$3" in
+    ping)
+        ping -c 4 "$tHost"
+        ;;
+
+    ssh)
+        if [ "$4" == "" ]; then
+            ssh -p $tPort "$tUser@$tHost"
+        else
+            ssh -p $tPort "$tUser@$4"
+        fi
+        ;;
+
+    sftp)
+        if [ "$4" == "" ]; then
+            sftp -P $tPort "$tUser@$tHost"
+        else
+            sftp -P $tPort "$tUser@$4"
+        fi
+        ;;
+
+    put)
+        rsync -arPz -e "ssh -p $tPort" "$4" "$tUser@$tHost:~/downloads"
+        ;;
+
+    put-at)
+        rsync -arPz -e "ssh -p $tPort" "$4" "$tUser@$tHost:$5"
+        ;;
+
+    get)
+        rsync -Wav -e "ssh -p $tPort" "$tUser@$tHost:~/downloads/$4" .
+        ;;
+
+    get-wiki)
+        rsync -Wav -e "ssh -p $tPort" "$tUser@$tHost:~/base/Documents/Markor/Wiki/$4" .
+        ;;
+
+    pak-put)
+        d=`date '+%F-%H%M'`
+        filename="$4-$d.tgz"
+        tar czf "$filename" "$4"
+        rsync -arPz -e "ssh -p $tPort" "$filename" "$tUser@$tHost:~/downloads"
+        rm "$filename"
+        ;;
+
+    edit)
+        scratchFile="data/data/com.termux/files/home/base/Documents/Markor/Wiki/Scratch.md"
+        if [ "$4" == "" ]; then
+            vim "scp://$tUser@$tHost:$tPort//$scratchFile"
+        else
+            vim "scp://$tUser@$4:$tPort//$scratchFile"
+        fi
+        ;;
+
+    view)
+        echo "$tUser"
+        ;;
+
+esac
+

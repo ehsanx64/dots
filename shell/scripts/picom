@@ -1,0 +1,36 @@
+# picocom tools
+case "$3" in
+    # NodeMCU
+    nmcu)
+        picocom /dev/ttyUSB0 -b 115200 --omap crlf --imap delbs
+        ;;
+
+    # punyforth
+    pf)
+        picocom /dev/ttyUSB0 -b 115200 --omap crlf --echo --imap delbs
+        ;;
+
+    # punyforth - bluetooth
+    pf-bt)
+        picocom /dev/rfcomm0 -b 115200 --omap crlf --echo --imap delbs
+        ;;
+
+    pf-at)
+        picocom "$2" -b 115200 --omap crlf --echo --imap delbs
+        ;;
+
+    picopy)
+        picocom /dev/ttyUSB0 -b 115200 --omap crcrlf --imap delbs
+        ;;
+
+    # Espressif AT SDK
+    at)
+        picocom /dev/ttyUSB0 -b 115200 --omap crcrlf --imap delbs,bsdel
+        ;;
+
+    port)
+        echo /dev/ttyUSB0
+        ;;
+
+esac
+

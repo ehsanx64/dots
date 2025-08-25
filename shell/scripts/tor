@@ -1,0 +1,18 @@
+case "$3" in
+    service-check)
+        curl -x socks5h://localhost:9050 -s https://check.torproject.org/api/ip
+        ;;
+
+    browser-tunnel)
+        socat TCP-LISTEN:9155,fork,bind=0.0.0.0 TCP:127.0.0.1:9150
+        ;;
+
+    browser-ytdl)
+        youtube-dl --verbose --proxy socks5://127.0.0.1:9150/ "$4"
+        ;;
+
+    *)
+        echo "tor"
+        ;;
+esac
+

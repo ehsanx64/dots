@@ -1,0 +1,6 @@
+# Generate random and secure passwords
+if [ "$3" != "" ]; then
+</dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c$3; echo ""
+else
+</dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c16; echo ""
+fi

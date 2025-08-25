@@ -1,0 +1,18 @@
+# Go Stuff
+case "$3" in
+    png-opti)
+        pngquant --quality 95 -o "$5" "$4"
+        exa -l "$4" "$5"
+        ;;
+
+    test)
+        "$theName" em
+        ;;
+        
+    *)
+        echo "go"
+        echo "$theName"
+        ;;
+
+esac
+

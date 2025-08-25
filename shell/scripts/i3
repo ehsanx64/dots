@@ -1,0 +1,12 @@
+# i3
+case "$3" in
+    ungapped)
+        i3-msg gaps inner current set 0
+        ;;
+
+    gapped)
+        i3-msg gaps inner current set 20
+        ;;
+
+esac
+

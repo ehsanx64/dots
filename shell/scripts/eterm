@@ -1,0 +1,22 @@
+case "$3" in
+    # Fix to display box-character properly
+    setup)
+        echo 'export LANG="en_US.UTF-8"'
+        echo 'export LANGUAGES="en_US.UTF-8"'
+        echo 'export LC_ALL="C"'
+        ;;
+
+    *)
+        eval $($main do eterm setup)
+
+        # If title is not provided run the eterm using defaults
+        if [ "$#" == 2 ]; then
+            $main xrun Eterm --buttonbar off --scrollbar-popup -f white -T ";fc"
+        # Otherwise use the supplied string as the xterm title
+        else
+            $main xrun Eterm --buttonbar off --scrollbar-popup -f white -T "$3"
+        fi
+        ;;
+
+esac
+

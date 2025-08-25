@@ -1,0 +1,13 @@
+# Plantuml
+pumlJarFile="~/Tools/plantuml-1.2025.2.jar"
+_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true" 
+case "$3" in
+    *)
+        if [ "$4" == "" ]; then
+            java -jar "$pumlJarFile"
+        else
+            java -jar "$pumlJarFile" "$4"
+        fi
+        ;;
+esac
+

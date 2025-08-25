@@ -1,0 +1,3 @@
+alias ll='ls -lFh'
+alias lh='ll -h'
+alias bat='batcat --theme grubox-dark '

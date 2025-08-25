@@ -1,0 +1,13 @@
+# Go Stuff
+case "$3" in
+    debug)
+        # Start the Delve debugger listenning on the specified port
+        dlv --listen="0.0.0.0:40000" --headless=true --api-version=2 --accept-multiclient debug .
+        ;;
+
+    *)
+        echo "go"
+        ;;
+
+esac
+

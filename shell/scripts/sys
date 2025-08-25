@@ -1,0 +1,33 @@
+# System-related stuff
+case "$3" in
+    hibernate)
+        sudo systemctl hibernate
+        ;;
+
+    watch-sensors)
+        while true; do sensors | grep temp1 | grep crit; sleep 1; clear; done
+        ;;
+
+    kbmap)
+        setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,ir
+        ;;
+        
+    dfs)
+        df -h / /home
+        ;;
+
+    normalize-perms)
+        find . -type f -exec chmod 644 {} \;
+        find . -type d -exec chmod 755 {} \;
+        ;;
+
+    updates)
+        sudo apt-get update
+        sudo apt-get upgrade -y
+        ;;
+
+    *)
+        echo "sys"
+        ;;
+esac
+

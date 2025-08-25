@@ -1,0 +1,24 @@
+case "$3" in
+    range)
+        echo -n "Min Freq.: "
+        cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq
+        echo -n "Max Freq.: "
+        cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+        ;;
+
+    stats)
+        for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq; do
+            echo -n "$i" | cut -d'/' -f 6 | tr -d '\n'
+            echo -n ": " 
+            sudo cat "$i"
+        done
+        ;;
+
+    set)
+        for i in /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq; do
+            echo "$2" | sudo tee $i; 
+        done
+        ;;
+
+esac
+
