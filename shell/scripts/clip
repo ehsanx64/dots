@@ -1,4 +1,8 @@
 case "$3" in
+    last)
+        cat "$lastQuery" | xsel -ib
+        ;;
+
     # Trim the cr from the end of variable
     t)
         if [ "$4" == "" ]; then
