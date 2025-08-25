@@ -10,6 +10,11 @@ fi
 # Configuration
 main=e
 
+# Add following line to fstab to have our tmpfs mounted at tmpDir
+# tmpfs   /tmp/t  tmpfs   rw,size=128M,x-gvfs-show        0       0
+tmpDir=/tmp/t
+lastQuery="$tmpDir/last-query"
+
 # Important path variables
 basePath=$(dirname `realpath ${BASH_SOURCE[0]}`)
 scriptsPath="$basePath/scripts"
@@ -20,6 +25,18 @@ if [ "$logging" = true ]; then
     echo "basePath: $basePath"
     echo "scriptsPath: $scriptsPath"
     echo "privateScriptsPath: $privateScriptsPath"
+fi
+
+# Make sure the temp folder exists
+if [ ! -d "$tmpDir" ]; then
+    if [ "$logging" = true ]; then
+        echo "$tmpDir does not exists, creating ..."
+    fi
+    mkdir "$tmpDir"
+else
+    if [ "$logging" = true ]; then
+        echo "$tmpDir exists"
+    fi
 fi
 
 # Source public stuff
@@ -55,21 +72,31 @@ case $1 in
 
     # List files in public and private scripts 
     ls-scripts)
+        echo -ne "\033[31m"
         echo "### Scripts ####################################################"
+        echo -ne "\033[0m"
         ls "$scriptsPath"
+
+        echo -ne "\033[31m"
         echo "### Private Scripts ############################################"
+        echo -ne "\033[0m"
         ls "$privateScriptsPath"
         ;;
 
     # Dump public and private variables
     ls-vars)
+        echo -ne "\033[31m"
         echo "### Variables ##################################################"
+        echo -ne "\033[0m"
         for key in "${!a[@]}"; do
-            printf "%-15s\t%s\n" "$key" "${a[$key]}"
+            printf "%-15s\t\033[32m%s\033[0m\n" "$key" "${a[$key]}"
         done
+
+        echo -ne "\033[31m"
         echo "### Private Variables ##########################################"
+        echo -ne "\033[0m"
         for key in "${!p[@]}"; do
-            printf "%-15s\t%s\n" "$key" "${p[$key]}"
+            printf "%-15s\t\033[32m%s\033[0m\n" "$key" "${p[$key]}"
         done
         echo
         ;;
@@ -111,6 +138,10 @@ case $1 in
         sudo ENABLE_DEPRECATED_TUN_ADDRESS_X=true sing-box run -c /home/ehsan/Tools/v2ray/config.json
         ;;
 
+    last)
+        cat "$lastQuery" | xsel -ib
+        ;;
+
 	*)
         if [ "$1" == "" ]; then
             echo "Don't know what to do!"
@@ -122,9 +153,11 @@ case $1 in
                 echo "Nothing to do";
             else
                 echo "${p[$1]}";
+                echo "${p[$1]}" > "$lastQuery";
             fi
 		else
             echo "${a[$1]}";
+            echo "${p[$1]}" > "$lastQuery";
 		fi
         ;;
 esac
