@@ -59,15 +59,23 @@ case "$3" in
         ;;
 
     monaco-dark)
-        xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
-            -xrm 'xterm*background: black' \
-            -xrm 'xterm*foreground: white' \
-            -xrm 'xterm*selectToClipboard: true' 
+        if [ "$title" != "" ]; then
+            xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+                -xrm 'xterm*background: black' \
+                -xrm 'xterm*foreground: white' \
+                -xrm 'xterm*selectToClipboard: true' \
+                -xrm 'XTerm.vt100.allowTitleOps: false' \
+                -T "$title"
+        else
+            xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+                -xrm 'xterm*background: black' \
+                -xrm 'xterm*foreground: white' \
+                -xrm 'xterm*selectToClipboard: true' 
+        fi
         ;;
 
     monaco-light)
         if [ "$title" != "" ]; then
-            echo "$title"
             xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
                 -xrm 'xterm*selectToClipboard: true' \
                 -xrm 'XTerm.vt100.allowTitleOps: false' \
