@@ -1,0 +1,18 @@
+# git Stuff
+case "$3" in
+    merge-push)
+        # Merge current branch (usually main) with dev branch, push and switch back to dev
+        git switch main; git merge dev && git push && git switch dev
+        ;;
+
+    ac)
+        # Add all files in current directory and use "$4" as a message to commit changes
+        git add .
+        git commit -m "$4"
+        ;;
+
+    *)
+        echo "git"
+        ;;
+esac
+
