@@ -1,3 +1,4 @@
 alias ll='ls -lFh'
 alias lh='ll -h'
 alias bat='batcat --theme grubox-dark '
+alias vless='vim -R -c "set nomodifiable noswapfile nobuflisted nowrap" -'

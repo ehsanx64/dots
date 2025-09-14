@@ -1,3 +1,4 @@
+title="$4"
 case "$3" in
     coderoman)
         xterm -fa "CodeNewRoman Nerd Font Mono" -fs 12.5 -bc -sb \
@@ -65,8 +66,16 @@ case "$3" in
         ;;
 
     monaco-light)
-        xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
-            -xrm 'xterm*selectToClipboard: true' -rv
+        if [ "$title" != "" ]; then
+            echo "$title"
+            xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+                -xrm 'xterm*selectToClipboard: true' \
+                -xrm 'XTerm.vt100.allowTitleOps: false' \
+                -rv -T "$title"
+        else
+            xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+                -xrm 'xterm*selectToClipboard: true' -rv
+        fi
         ;;
 
     monaco-blue)
