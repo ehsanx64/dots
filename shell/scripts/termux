@@ -12,6 +12,37 @@ case "$3" in
         fi
         ;;
 
+    # Mount home directory on ~/Desktop/MountPoint
+    sshfs-mount)
+        hostname="$4"
+        mountpoint="$5"
+
+        # If no hostname given exit
+        if [ "$hostname" = "" ]; then
+            echo "No hostname given"
+            exit 1
+        fi
+        
+        # If no mountpoint given use the default (~/Desktop/Termux)
+        if [ "$mountpoint" = "" ]; then
+            mountpoint="$HOME/Desktop/Termux"
+            echo "No mount point given using the default ($mountpoint)"
+        fi
+
+        # Check for and create the mount point directory if it doesn't exist
+        if [ ! -d "$mountpoint" ]; then
+            echo "Mount point directory does not exist. Trying to create ..."
+            mkdir "$mountpoint"
+        else
+            echo "Mount point directory exist"
+        fi
+
+        echo "Trying to mount ..."
+        sshfs -p 8022 "$tUser@$hostname:/data/data/com.termux/files/home" "$mountpoint"
+        echo "Done. Here's the listing ..."
+        ls "$mountpoint"
+        ;;
+
     sftp)
         if [ "$4" == "" ]; then
             sftp -P $tPort "$tUser@$tHost"
