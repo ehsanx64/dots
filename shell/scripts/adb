@@ -1,0 +1,21 @@
+# adb (Android Device Bridge)
+case "$3" in
+    # Forward traffic through USB (USB debugging must be enabled on the phone)
+    # for Termux
+    termux-forward)
+        adb forward tcp:8022 tcp:8022
+        adb forward --list
+        ;;
+
+    # Remove all forwarding rules
+    rm-forwards)
+        adb forward --remove-all
+        adb forward --list
+        ;;
+
+    view)
+        echo "adb"
+        ;;
+
+esac
+
