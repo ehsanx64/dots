@@ -1,0 +1,12 @@
+# Various Documentation
+case "$3" in
+    lfm)
+        gzip -dc /usr/share/doc/lfm/README.gz | vim -R - 
+        ;;
+
+    *)
+        echo "docs"
+        ;;
+
+esac
+
