@@ -32,15 +32,22 @@ case "$3" in
         ;;
 
     consolas)
-        xterm -fa "Consolas" -fs 12.5 -bc -sb -en en_US.UTF-8 \
+        xterm -fa "Consolas:style=" -fs 12.5 -bc -sb -en en_US.UTF-8 \
             -xrm 'xterm*background: black' \
             -xrm 'xterm*foreground: cyan' \
             -xrm 'xterm*selectToClipboard: true'
         ;;
 
     consolas-light)
-        xterm -fa "Consolas" -fs 12 -bc -sb -en en_US.UTF-8 \
+        xterm -fa "Consolas:style=" -fs 12.5 -bc -sb -en en_US.UTF-8 \
             -xrm 'xterm*selectToClipboard: true' -rv
+        ;;
+
+    consolas-green)
+        xterm -fa "Consolas:style=Italic" -fs 13 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: #001500' \
+            -xrm 'xterm*foreground: lime' \
+            -xrm 'xterm*selectToClipboard: true'
         ;;
 
     monaco)
