@@ -79,6 +79,11 @@ case $1 in
         "${@:2}" > /dev/null 2>&1 &
         ;;
 
+    paths)
+        echo "$scriptsPath"
+        echo "$privateScriptsPath"
+        ;;
+
     # List files in public and private scripts 
     ls-scripts)
         echo -ne "\033[31m"
