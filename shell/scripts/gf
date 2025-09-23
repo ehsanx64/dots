@@ -1,0 +1,14 @@
+# gf - gforth (GNU Forth) stuff
+case "$3" in
+    run)
+        # Run the given script with a 'bye' executed afterward
+        file="$4"
+        gforth "$file" -e 'bye'
+        ;;
+
+    *)
+        echo "gf - gforth (GNU Forth) stuff"
+        ;;
+
+esac
+
