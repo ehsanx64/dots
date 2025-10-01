@@ -5,23 +5,24 @@
 #}
 
 #order += "ipv6"
+#order += "run_whoami"
+order += "wireless wls1"
 order += "disk /"
 order += "disk /home"
 #order += "run_watch DHCP"
 #order += "run_watch VPNC"
 #order += "path_exists VPN"
-order += "wireless wlan0"
 #order += "ethernet eth0"
-order += "battery 0"
-order += "cpu_temperature 3"
+#order += "battery 0"
+order += "cpu_temperature 1"
 order += "memory"
 order += "load"
-order += "tztime local"
-#order += "tztime berlin"
+#order += "tztime local"
+order += "tztime tehran"
 
-wireless wlan0 {
-    format_up = "W: (%quality at %essid, %bitrate) %ip"
-        format_down = "W: down"
+wireless wls1 {
+    format_up = "WIFI: (%quality at %essid, %bitrate) %ip"
+        format_down = "WIFI: down"
 }
 
 ethernet eth0 {
@@ -59,13 +60,13 @@ tztime local {
         hide_if_equals_localtime = true
 }
 
-tztime berlin {
-    format = "%Y-%m-%d %H:%M:%S %Z"
-        timezone = "Europe/Berlin"
+tztime tehran {
+    format = "%Y-%m-%d %H:%M:%S"
+        timezone = "Asia/Tehran"
 }
 
 load {
-    format = "%5min"
+    format = "LOAD: %1min %5min %15min"
 }
 
 cpu_temperature 0 {
@@ -74,9 +75,9 @@ cpu_temperature 0 {
 }
 
 memory {
-    format = "%used"
+    format = "MEM: %used"
         threshold_degraded = "10%"
-        format_degraded = "MEMORY: %free"
+        format_degraded = "MEM: %free"
 }
 
 disk "/" {
