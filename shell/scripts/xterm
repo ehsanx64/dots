@@ -16,7 +16,7 @@ case "$3" in
 
     coderoman-light)
         xterm -fa "CodeNewRoman Nerd Font Mono" -fs 12 -bc -sb \
-            -xrm 'xterm*selectToClipboard: true' -rv -en en_US.UTF-8
+            -xrm 'xterm*selectToClipboard: true' -en en_US.UTF-8
         ;;
 
     saucecodepro-dark)
@@ -28,7 +28,7 @@ case "$3" in
 
     saucecodepro-light)
         xterm -fa "SauceCodePro Nerd Font Mono" -fs 12 -bc -sb \
-            -xrm 'xterm*selectToClipboard: true' -rv -en en_US.UTF-8
+            -xrm 'xterm*selectToClipboard: true' -en en_US.UTF-8
         ;;
 
     consolas)
@@ -40,7 +40,7 @@ case "$3" in
 
     consolas-light)
         xterm -fa "Consolas:style=" -fs 12.5 -bc -sb -en en_US.UTF-8 \
-            -xrm 'xterm*selectToClipboard: true' -rv
+            -xrm 'xterm*selectToClipboard: true' 
         ;;
 
     consolas-green)
@@ -86,10 +86,10 @@ case "$3" in
             xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
                 -xrm 'xterm*selectToClipboard: true' \
                 -xrm 'XTerm.vt100.allowTitleOps: false' \
-                -rv -T "$title"
+                 -T "$title"
         else
             xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
-                -xrm 'xterm*selectToClipboard: true' -rv
+                -xrm 'xterm*selectToClipboard: true'
         fi
         ;;
 
@@ -110,7 +110,7 @@ case "$3" in
 
     courier-light)
         xterm -fa "Courier 10 Pitch" -fs 11.5 -bc -sb -en en_US.UTF-8 \
-            -xrm 'xterm*selectToClipboard: true' -rv
+            -xrm 'xterm*selectToClipboard: true'
         ;;
 
     courier-blue)
@@ -138,7 +138,7 @@ case "$3" in
         ;;
 
     light)
-        xterm -bc -sb -rv -en en_US.UTF-8 \
+        xterm -bc -sb -en en_US.UTF-8 \
             -xrm 'xterm*selectToClipboard: true'
         ;;
 esac
