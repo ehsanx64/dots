@@ -1,8 +1,10 @@
 # Termux
+termux_homedir="/data/data/com.termux/files/home"
 case "$3" in
     ping)
         ping -c 4 "$tHost"
         ;;
+
 
     ssh)
         if [ "$4" == "" ]; then
@@ -11,6 +13,7 @@ case "$3" in
             ssh -p $tPort "$tUser@$4"
         fi
         ;;
+
 
     # Mount home directory on ~/Desktop/MountPoint
     sshfs-mount)
@@ -38,10 +41,11 @@ case "$3" in
         fi
 
         echo "Trying to mount ..."
-        sshfs -p 8022 "$tUser@$hostname:/data/data/com.termux/files/home" "$mountpoint"
+        sshfs -p 8022 "$tUser@$hostname:$termux_homedir" "$mountpoint"
         echo "Done. Here's the listing ..."
         ls "$mountpoint"
         ;;
+
 
     sftp)
         if [ "$4" == "" ]; then
@@ -51,21 +55,26 @@ case "$3" in
         fi
         ;;
 
+
     put)
         rsync -arPz -e "ssh -p $tPort" "$4" "$tUser@$tHost:~/downloads"
         ;;
+
 
     put-at)
         rsync -arPz -e "ssh -p $tPort" "$4" "$tUser@$tHost:$5"
         ;;
 
+
     get)
         rsync -Wav -e "ssh -p $tPort" "$tUser@$tHost:~/downloads/$4" .
         ;;
 
+
     get-wiki)
         rsync -Wav -e "ssh -p $tPort" "$tUser@$tHost:~/base/Documents/Markor/Wiki/$4" .
         ;;
+
 
     pak-put)
         d=`date '+%F-%H%M'`
@@ -75,8 +84,9 @@ case "$3" in
         rm "$filename"
         ;;
 
+
     edit)
-        scratchFile="data/data/com.termux/files/home/base/Documents/Markor/Wiki/Scratch.md"
+        scratchFile="$termux_homedir/base/Documents/Wiki/Scratch.md"
         if [ "$4" == "" ]; then
             vim "scp://$tUser@$tHost:$tPort//$scratchFile"
         else
@@ -84,8 +94,33 @@ case "$3" in
         fi
         ;;
 
+
     view)
         echo "$tUser"
+        ;;
+
+
+    sync-from)
+        src_addr="$4"
+        dest_dir="$5"
+
+        rsync -arvz  -e "ssh -p 8022" "$tUser@$src_addr" "$dest_dir"
+        ;;
+
+
+    sync-to)
+        src_dir="$4"
+        dest_addr="$5"
+
+        rsync -arvz  -e "ssh -p 8022" "$src_dir" "$tUser@$dest_addr"
+        ;;
+
+
+    # Run a command on a Termux host
+    exec)
+        termux_machine="$4"
+        command="${@:5}"
+        ssh -p 8022 "$tUser@$termux_machine" "$command" 
         ;;
 
 esac
