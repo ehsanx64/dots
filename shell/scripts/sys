@@ -21,6 +21,11 @@ case "$3" in
         find . -type d -exec chmod 755 {} \;
         ;;
 
+    lowercase-names)
+        find . -type f -exec rename 'y/A-Z/a-z/' {} \;
+        find . -type d -exec rename 'y/A-Z/a-z/' {} \;
+        ;;
+
     updates)
         sudo apt-get update
         sudo apt-get upgrade -y
