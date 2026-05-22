@@ -4,6 +4,15 @@ case "$3" in
         gzip -dc /usr/share/doc/lfm/README.gz | vim -R - 
         ;;
 
+    fastapi)
+        python -m http.server -d /var/www/html/docs/fastapi 9200
+        ;;
+
+    sqlmodel)
+        python -m http.server -d /var/www/html/docs/sqlmodel 9201
+        ;;
+
+
     *)
         echo "docs"
         ;;
