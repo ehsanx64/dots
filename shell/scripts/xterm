@@ -16,6 +16,8 @@ case "$3" in
 
     coderoman-light)
         xterm -fa "CodeNewRoman Nerd Font Mono" -fs 12 -bc -sb \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: black' \
             -xrm 'xterm*selectToClipboard: true' -en en_US.UTF-8
         ;;
 
@@ -28,6 +30,8 @@ case "$3" in
 
     saucecodepro-light)
         xterm -fa "SauceCodePro Nerd Font Mono" -fs 12 -bc -sb \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: black' \
             -xrm 'xterm*selectToClipboard: true' -en en_US.UTF-8
         ;;
 
@@ -40,6 +44,8 @@ case "$3" in
 
     consolas-light)
         xterm -fa "Consolas:style=" -fs 12.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: black' \
             -xrm 'xterm*selectToClipboard: true' 
         ;;
 
@@ -57,10 +63,34 @@ case "$3" in
             -xrm 'xterm*selectToClipboard: true' 
         ;;
 
+    monaco-green)
+        xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: #002100' \
+            -xrm 'xterm*foreground: #eeffee' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
     monaco-big)
         xterm -fa "Monaco" -fs 12.5 -bc -sb -en en_US.UTF-8 \
             -xrm 'xterm*background: black' \
             -xrm 'xterm*foreground: green' \
+            -xrm 'xterm*allowBoldFonts: false' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
+    monaco-light-small)
+        xterm -fa "Monaco" -fs 10.3 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: #fff' \
+            -xrm 'xterm*foreground: black' \
+            -xrm 'xterm*allowBoldFonts: false' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
+
+    monaco-small)
+        xterm -fa "Monaco" -fs 10.3 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: black' \
+            -xrm 'xterm*foreground: #fff' \
             -xrm 'xterm*allowBoldFonts: false' \
             -xrm 'xterm*selectToClipboard: true' 
         ;;
@@ -81,14 +111,24 @@ case "$3" in
         fi
         ;;
 
+    monaco-dark-small)
+        xterm -fa "Monaco" -fs 10 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*allowBoldFonts: false' \
+            -xrm 'xterm*selectToClipboard: true' 
+        ;;
+
     monaco-light)
         if [ "$title" != "" ]; then
             xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+                -xrm 'xterm*background: white' \
+                -xrm 'xterm*foreground: black' \
                 -xrm 'xterm*selectToClipboard: true' \
                 -xrm 'XTerm.vt100.allowTitleOps: false' \
                  -T "$title"
         else
             xterm -fa "Monaco" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+                -xrm 'xterm*background: white' \
+                -xrm 'xterm*foreground: black' \
                 -xrm 'xterm*selectToClipboard: true'
         fi
         ;;
@@ -110,6 +150,8 @@ case "$3" in
 
     courier-light)
         xterm -fa "Courier 10 Pitch" -fs 11.5 -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: black' \
             -xrm 'xterm*selectToClipboard: true'
         ;;
 
@@ -139,6 +181,8 @@ case "$3" in
 
     light)
         xterm -bc -sb -en en_US.UTF-8 \
+            -xrm 'xterm*background: white' \
+            -xrm 'xterm*foreground: black' \
             -xrm 'xterm*selectToClipboard: true'
         ;;
 esac
