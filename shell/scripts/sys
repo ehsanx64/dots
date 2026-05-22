@@ -31,6 +31,13 @@ case "$3" in
         sudo apt-get upgrade -y
         ;;
 
+    tun-nat)
+        gateway="$4"
+        sudo iptables -t nat -A POSTROUTING -o "$gateway" -j MASQUERADE
+        sudo iptables -A FORWARD -i ens5 -o "$gateway" -j ACCEPT
+        sudo iptables -A FORWARD -i "$gateway" -o ens5 -m state --state RELATED,ESTABLISHED -j ACCEPT
+        ;;
+
     *)
         echo "sys"
         ;;
