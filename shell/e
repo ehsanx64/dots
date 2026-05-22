@@ -69,6 +69,10 @@ case $1 in
         $main do clip "$2" "$3" "$4"
         ;;
 
+    yank)
+        xsel -ib
+        ;;
+
     realpath)
         # Put the realpath for the given file on the clipboard
         realpath "$2" | xsel -ib
@@ -137,6 +141,10 @@ case $1 in
     # Escape the '\ ' matches with '\\ '
     esc-backslash)
         sed 's/\ /\\\ /g'
+        ;;
+
+    line)
+        echo "################################################################################"
         ;;
 
     # Make a tgz archive from the given filename; a date label appended to the archive filename
