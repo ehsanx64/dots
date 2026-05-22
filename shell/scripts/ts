@@ -1,0 +1,27 @@
+# Generate various kinds of timestamps
+case "$3" in
+    date)
+        date +%Y%m%d
+        ;;
+
+    date1)
+        date +%F
+        ;;
+
+    time)
+        date +%H%M%S
+        ;;
+
+    datetime)
+        date +%Y%m%d-%H%M%S
+        ;;
+
+    unix)
+        date +%s
+        ;;
+
+    *)
+        date +%Y%m%d-%H%M
+        ;;
+esac
+
